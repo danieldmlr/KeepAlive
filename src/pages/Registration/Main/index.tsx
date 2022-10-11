@@ -42,6 +42,10 @@ export default function Main() {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                const fullName = user.displayName?.split(' ');
+                if(fullName){
+                    const name = fullName[0];
+                }
                 updateProfile(userCredential.user, { displayName: name })
                 navigate("/")
                 console.log(user.displayName)
@@ -251,6 +255,7 @@ export default function Main() {
                             style={{ display: `${!passwordMatch ? "none" : "block"}` }}
                         />
                     </IconContainer>
+                    {errorRepeatPassword && <ErrorMessage />}
                 </InputContainerPassword>
             </InputsContainer>
             <RegisterButton onClick={signUp}>Registrar</RegisterButton>

@@ -14,10 +14,16 @@ export default function FooterHome() {
         navigate("/")
     }
 
+    // const user = userCredential.user;
+    // const fullName = auth.currentUser?.displayName?.split(' ');
+    // if(fullName){
+    //     const name = fullName[0];
+    // }
+
     return (
         <HomeFooter>
             <LeftContainerFooter>
-                <UserGreeting>Bem-vindo, {auth.currentUser?.displayName}</UserGreeting>
+                <UserGreeting>Bem-vindo, {auth.currentUser?.displayName?.split(' ')[0]}</UserGreeting>
                 <FooterText>Essa janela do navegador é usada para manter sua sessão de autenticação ativa.
                     Deixe-a aberta em segundo plano e abra uma nova janela para continuar a navegar.</FooterText>
                 <SeparationBar></SeparationBar>
