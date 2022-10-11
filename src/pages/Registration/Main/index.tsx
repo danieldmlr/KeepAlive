@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai"
 import { useNavigate } from "react-router-dom";
 import { borderColor, errorColor, isValidColor } from "../../../components/UI/variables"
@@ -24,7 +24,13 @@ export default function Main() {
     const [errorRepeatPassword, setErrorRepeatPassword] = useState(false)
 
     const [correctPassword, setCorrectPassword] = useState(false)
-    const [passwordMatch, setpasswordMatch] = useState(false)
+    const [passwordMatch, setPasswordMatch] = useState(false)
+
+    const [hasMinLength, sethasMinLength] = useState(false)
+    const [hasUppercase, setHasUppercase] = useState(false)
+    const [hasLowercase, setHasLowercase] = useState(false)
+    const [hasNumber, setHasNumber] = useState(false)
+    const [hasSpecialCharacter, sethasSpecialCharacter] = useState(false)
 
     const signUp = () => {
 
@@ -50,7 +56,6 @@ export default function Main() {
         matchPasswords(password, repeatPassword) ? setErrorRepeatPassword(false) : setErrorRepeatPassword(true)
     }
 
-
     const validateEmail = (email: string) => {
         const regex = new RegExp(/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/);
         return regex.test(email.toLowerCase());
@@ -66,12 +71,31 @@ export default function Main() {
         return regex.test(password);
     }
 
+    useEffect(() => {
+
+
+        const regexMinLength = /(?=.{6})/;
+        regexMinLength.test(password) ? sethasMinLength(true) : sethasMinLength(false)
+
+        const regexUppercase = /(?=.*?[A-Z])/;
+        regexUppercase.test(password) ? setHasUppercase(true) : setHasUppercase(false)
+
+        const regexLowercase = /^(?=.*[a-z])/;
+        regexLowercase.test(password) ? setHasLowercase(true) : setHasLowercase(false)
+
+        const regexNumber = /(?=.*?[0-9])/;
+        regexNumber.test(password) ? setHasNumber(true) : setHasNumber(false)
+
+        const regexSpecialCharacter = /(?=.*[-+_!@#$%^&*Çç., ?])/;
+        regexSpecialCharacter.test(password) ? sethasSpecialCharacter(true) : sethasSpecialCharacter(false)
+
+    }, [hasUppercase, hasLowercase, password])
+
     const validPassword = () => {
         validatePassword(password) ? setCorrectPassword(true) : setCorrectPassword(false)
         return correctPassword
     }
-    console.log("sua senha é", password)
-    // console.log(correctPassword)
+
 
     const matchPasswords = (password: string, repeatPassword: string) => {
         if (repeatPassword === password) {
@@ -80,13 +104,12 @@ export default function Main() {
             console.log("as senhas não coincidem")
         }
     }
-    console.log(repeatPassword)
 
     const equalPasswords = () => {
-        matchPasswords(password, repeatPassword) ? setpasswordMatch(true) : setpasswordMatch(false)
+        matchPasswords(password, repeatPassword) ? setPasswordMatch(true) : setPasswordMatch(false)
         return passwordMatch
     }
-    // console.log(passwordMatch)
+
     return (
 
         <>
@@ -104,15 +127,13 @@ export default function Main() {
                             setEmail(target.value)
                             setErrorEmail(false)
 
-                        }}
-                    // onFocus={() => setFocusedEmail(true)}
-                    // onBlur={(event) =>
-                    //     event.target.value.length > 0 ? setFocusedEmail(true) : setFocusedEmail(false)
-                    // }
-                    >
+                        }}>
                     </Input>
                     <IconContainer>
-                        <AiOutlineCheck size={24} color={"#00D100"} display="none" />
+                        <AiOutlineCheck
+                            size={24}
+                            color={isValidColor}
+                            display="none" />
                     </IconContainer>
                 </InputContainer>
                 <InputContainer>
@@ -120,18 +141,21 @@ export default function Main() {
                         type="text"
                         name="name"
                         autoComplete="off"
-                        placeholder="Nome Completo"
+                        placeholder="Nome"
                         value={name}
                         style={{ borderColor: `${errorName ? errorColor : borderColor}` }}
 
                         onChange={({ target }) => {
                             setName(target.value)
                             setErrorName(false)
-                        }}
-                    >
+                        }}>
                     </Input>
                     <IconContainer>
-                        <AiOutlineCheck size={24} color={"#00D100"} display="none" />
+                        <AiOutlineCheck
+                            size={24}
+                            color={isValidColor}
+                            display="none"
+                        />
                     </IconContainer>
                 </InputContainer>
                 <InputContainer>
@@ -148,6 +172,8 @@ export default function Main() {
                         onChange={({ target }) => {
                             setPassword(target.value)
                             setErrorPassword(false)
+
+
                         }}
 
                         onBlur={validPassword}
@@ -155,27 +181,21 @@ export default function Main() {
                     >
                     </Input>
                     <IconContainer>
-                        <AiOutlineCheck 
-                        size={24} 
-                        color={"#00D100"} 
-                        style={{ display: `${!correctPassword ? "none" : "block"}` }}
+                        <AiOutlineCheck
+                            size={24}
+                            color={"#00D100"}
+                            style={{ display: `${!correctPassword ? "none" : "block"}` }}
                         />
                     </IconContainer>
                 </InputContainer>
+                <div>
+                    <p style={{ color: `${hasMinLength ? isValidColor : "white"}` }}>Seis digitos <AiOutlineCheck /> </p>
+                    <p style={{ color: `${hasNumber ? isValidColor : "white"}` }}>Um número <AiOutlineCheck /> </p>
+                    <p style={{ color: `${hasUppercase ? isValidColor : "white"}` }}>Uma letra maiúscula <AiOutlineCheck /> </p>
+                    <p style={{ color: `${hasLowercase ? isValidColor : "white"}` }}>Uma letra minúscula <AiOutlineCheck /> </p>
+                    <p style={{ color: `${hasSpecialCharacter ? isValidColor : "white"}` }}>Um caractere especial <AiOutlineCheck /> </p>
+                </div>
                 <InputContainerPassword>
-                    {/* <Input
-                        type="password"
-                        name="repeatPassword"
-                        placeholder="Repetir Senha"
-                        autoComplete="off"
-                        value={repeatPassword}
-                        style={{ borderColor: `${errorRepeatPassword ? errorColor : "white"}` }}
-                        onChange={({ target }) => {
-                            setRepeatPassword(target.value)
-                            setErrorRepeatPassword(false)
-                        }}
-                    > */}
-
                     <Input
                         type="password"
                         name="repeatPassword"
@@ -190,6 +210,7 @@ export default function Main() {
                         onChange={({ target }) => {
                             setRepeatPassword(target.value)
                             setErrorRepeatPassword(false)
+                            setPasswordMatch(false)
                         }}
                         onBlur={equalPasswords}
 
@@ -198,7 +219,7 @@ export default function Main() {
                     <IconContainer>
                         <AiOutlineCheck
                             size={24}
-                            color={"#00D100"}
+                            color={isValidColor}
                             style={{ display: `${!passwordMatch ? "none" : "block"}` }}
                         />
                     </IconContainer>
