@@ -8,5 +8,7 @@ export const missionTextColor = "#C12D18";
 export const missionSubTextColor = "#222222";
 
 export const borderColor = "#FFFFFF";
+export const isValidColor = "#00D100";
+
 export const buttonColor = "linear-gradient(132.34deg, #FF2D04 22.57%, #C13216 72.04%)";
 export const buttonTextColor = "#C13216";
