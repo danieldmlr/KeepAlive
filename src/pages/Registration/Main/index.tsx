@@ -3,8 +3,8 @@ import { AiOutlineCheck } from "react-icons/ai"
 import { useNavigate } from "react-router-dom";
 import { borderColor, errorColor, isValidColor } from "../../../components/UI/variables"
 import ErrorMessage from "../../../components/ValidationError"
-import { InputsContainer, Label, Input, IconContainer, RegisterButton, InputContainer, InputContainerPassword, LoginGuide, LoginRedirectButton } from "./styles"
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, updateCurrentUser, updateProfile } from "firebase/auth";
+import { InputsContainer, Label, Input, IconContainer, RegisterButton, InputContainer, InputContainerPassword, LoginGuide, LoginRedirectButton, PasswordRequirements, Required } from "./styles"
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { app } from '../../../services/firebaseConfig';
 
 
@@ -32,12 +32,14 @@ export default function Main() {
     const [hasNumber, setHasNumber] = useState(false);
     const [hasSpecialCharacter, sethasSpecialCharacter] = useState(false);
 
+    const [isVisible, setIsVisible] = useState(false);
+
     const signUp = () => {
 
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                updateProfile(userCredential.user, {displayName: name})
+                updateProfile(userCredential.user, { displayName: name })
                 navigate("/")
                 console.log(user.displayName)
             })
@@ -58,7 +60,7 @@ export default function Main() {
     }
 
     const validateEmail = (email: string) => {
-        const regex = new RegExp(/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/);
+        const regex = (/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/);
         return regex.test(email.toLowerCase());
     }
 
@@ -73,7 +75,6 @@ export default function Main() {
     }
 
     useEffect(() => {
-
 
         const regexMinLength = /(?=.{6})/;
         regexMinLength.test(password) ? sethasMinLength(true) : sethasMinLength(false)
@@ -90,7 +91,7 @@ export default function Main() {
         const regexSpecialCharacter = /(?=.*[-+_!@#$%^&*Çç., ?])/;
         regexSpecialCharacter.test(password) ? sethasSpecialCharacter(true) : sethasSpecialCharacter(false)
 
-    }, [hasUppercase, hasLowercase, password])
+    }, [hasMinLength, hasNumber, hasUppercase, hasLowercase, hasSpecialCharacter, password])
 
     const validPassword = () => {
         validatePassword(password) ? setCorrectPassword(true) : setCorrectPassword(false)
@@ -176,8 +177,13 @@ export default function Main() {
 
 
                         }}
+                        onFocus={() => {
+                            setIsVisible(true)
+                        }}
+                        onBlur={() => {
+                            validPassword; setIsVisible(false)
+                        }}
 
-                        onBlur={validPassword}
 
                     >
                     </Input>
@@ -188,14 +194,15 @@ export default function Main() {
                             style={{ display: `${!correctPassword ? "none" : "block"}` }}
                         />
                     </IconContainer>
+
                 </InputContainer>
-                <div>
-                    <p style={{ color: `${hasMinLength ? isValidColor : "white"}` }}>Seis digitos <AiOutlineCheck /> </p>
-                    <p style={{ color: `${hasNumber ? isValidColor : "white"}` }}>Um número <AiOutlineCheck /> </p>
-                    <p style={{ color: `${hasUppercase ? isValidColor : "white"}` }}>Uma letra maiúscula <AiOutlineCheck /> </p>
-                    <p style={{ color: `${hasLowercase ? isValidColor : "white"}` }}>Uma letra minúscula <AiOutlineCheck /> </p>
-                    <p style={{ color: `${hasSpecialCharacter ? isValidColor : "white"}` }}>Um caractere especial <AiOutlineCheck /> </p>
-                </div>
+                <PasswordRequirements style={{ display: `${isVisible ? "block" : "none"}` }}>
+                    <Required style={{ color: `${hasMinLength ? isValidColor : "white"}` }}>Seis digitos <AiOutlineCheck /> </Required>
+                    <Required style={{ color: `${hasNumber ? isValidColor : "white"}` }}>Um número <AiOutlineCheck /> </Required>
+                    <Required style={{ color: `${hasUppercase ? isValidColor : "white"}` }}>Uma letra maiúscula <AiOutlineCheck /> </Required>
+                    <Required style={{ color: `${hasLowercase ? isValidColor : "white"}` }}>Uma letra minúscula <AiOutlineCheck /> </Required>
+                    <Required style={{ color: `${hasSpecialCharacter ? isValidColor : "white"}` }}>Um caractere especial <AiOutlineCheck /> </Required>
+                </PasswordRequirements>
                 <InputContainerPassword>
                     <Input
                         type="password"
@@ -214,7 +221,6 @@ export default function Main() {
                             setPasswordMatch(false)
                         }}
                         onBlur={equalPasswords}
-
                     >
                     </Input>
                     <IconContainer>

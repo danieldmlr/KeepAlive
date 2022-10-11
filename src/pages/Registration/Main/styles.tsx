@@ -20,16 +20,6 @@ export const Label = styled.label`
     margin-bottom: 4.76%;
 `;
 
-// export const EmailContainer = styled.div`
-//     display: flex;
-//     align-items: center;
-//     margin-bottom: 4.91%;
-
-//     @media screen and (max-width: 321px) {
-//         margin-bottom: 10%;
-//     }
-// `;
-
 export const Input = styled.input`
     width: 69.53%;
     height: 56px;
@@ -90,6 +80,15 @@ export const IconContainer = styled.div`
     margin-left: 2.5%;
 `;
 
+export const PasswordRequirements = styled.div`
+    margin-bottom: 4.91%;
+    padding-left: 2.98%;
+`;
+
+export const Required = styled.p`
+    font-size: 1rem;
+`;
+
 export const RegisterButton = styled.button`
     width: 73.28%;
     height: 67px;
@@ -116,25 +115,21 @@ export const RegisterButton = styled.button`
     @media screen and (max-width: 768px) and (orientation: portrait){
         width: 56.32%;
         height: 67px;
-        /* border: 1px solid red; */
     }
 
     @media screen and (max-width: 426px)  {
         width: 74%;
         height: 57px;
-        /* border: 1px solid red; */
     }
 
     @media screen and (max-width: 376px)  {
         width: 74%;
         height: 57px;
-        /* border: 1px solid red; */
     }
 
     @media screen and (max-width: 321px)  {
         width: 74%;
         height: 67px;
-        /* border: 1px solid red; */
     }
 
 `;
