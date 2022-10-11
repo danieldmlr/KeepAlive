@@ -22,15 +22,22 @@ export const HomeFooter = styled.footer`
     }
 `;
 
+export const UserGreeting = styled.p`
+    font-size: 1.5rem;
+    font-weight: 700;
+    /* padding-left: 1.44%; */
+`;
+
 export const LeftContainerFooter = styled.div`
     display: flex;
-    margin-right: 6.5%;
+    justify-content: space-around;
+    align-items: center;
 `;
 
 export const FooterText = styled.p`
-    width: 31%;
+    width: 46%;
     font-size: 0.75rem;
-    padding: 0 1.83% 0 18.44%;
+    /* padding: 0 1.83% 0 15%; */
     text-align: end;
 
     @media screen and (max-width: 1441px) {
@@ -89,7 +96,7 @@ export const SeparationBar = styled.p`
     border: 1px solid #FFFFFF;
     width: 0;
     height: 59px;
-    margin-right: 6.5%;
+    /* margin-right: 6.5%; */
 
     @media screen and (max-width: 769px){
         display: none;

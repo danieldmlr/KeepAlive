@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { borderColor, errorColor, isValidColor } from "../../../components/UI/variables"
 import ErrorMessage from "../../../components/ValidationError"
 import { InputsContainer, Label, Input, IconContainer, RegisterButton, InputContainer, InputContainerPassword, LoginGuide, LoginRedirectButton } from "./styles"
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, updateCurrentUser, updateProfile } from "firebase/auth";
 import { app } from '../../../services/firebaseConfig';
 
 
@@ -13,32 +13,33 @@ export default function Main() {
     const auth = getAuth(app);
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState('')
-    const [name, setName] = useState('')
-    const [password, setPassword] = useState('')
-    const [repeatPassword, setRepeatPassword] = useState('')
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
 
-    const [errorEmail, setErrorEmail] = useState(false)
-    const [errorName, setErrorName] = useState(false)
-    const [errorPassword, setErrorPassword] = useState(false)
-    const [errorRepeatPassword, setErrorRepeatPassword] = useState(false)
+    const [errorEmail, setErrorEmail] = useState(false);
+    const [errorName, setErrorName] = useState(false);
+    const [errorPassword, setErrorPassword] = useState(false);
+    const [errorRepeatPassword, setErrorRepeatPassword] = useState(false);
 
-    const [correctPassword, setCorrectPassword] = useState(false)
-    const [passwordMatch, setPasswordMatch] = useState(false)
+    const [correctPassword, setCorrectPassword] = useState(false);
+    const [passwordMatch, setPasswordMatch] = useState(false);
 
-    const [hasMinLength, sethasMinLength] = useState(false)
-    const [hasUppercase, setHasUppercase] = useState(false)
-    const [hasLowercase, setHasLowercase] = useState(false)
-    const [hasNumber, setHasNumber] = useState(false)
-    const [hasSpecialCharacter, sethasSpecialCharacter] = useState(false)
+    const [hasMinLength, sethasMinLength] = useState(false);
+    const [hasUppercase, setHasUppercase] = useState(false);
+    const [hasLowercase, setHasLowercase] = useState(false);
+    const [hasNumber, setHasNumber] = useState(false);
+    const [hasSpecialCharacter, sethasSpecialCharacter] = useState(false);
 
     const signUp = () => {
 
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                updateProfile(userCredential.user, {displayName: name})
                 navigate("/")
-                console.log(user)
+                console.log(user.displayName)
             })
             .catch((error) => {
                 // const errorCode = error.code;
