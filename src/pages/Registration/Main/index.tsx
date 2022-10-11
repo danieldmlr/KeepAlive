@@ -23,6 +23,9 @@ export default function Main() {
     const [errorPassword, setErrorPassword] = useState(false);
     const [errorRepeatPassword, setErrorRepeatPassword] = useState(false);
 
+    const [correctEmail, setCorrectEmail] = useState(false);
+    const [correctName, setCorrectName] = useState(false);
+
     const [correctPassword, setCorrectPassword] = useState(false);
     const [passwordMatch, setPasswordMatch] = useState(false);
 
@@ -93,6 +96,15 @@ export default function Main() {
 
     }, [hasMinLength, hasNumber, hasUppercase, hasLowercase, hasSpecialCharacter, password])
 
+    const validEmail = () => {
+        validateEmail(email) ? setCorrectEmail(true) : setCorrectEmail(false)
+        return correctEmail
+    }
+
+    const validName = () => {
+        validateName(name) ? setCorrectName(true) : setCorrectName(false)
+        return correctName
+    }
     const validPassword = () => {
         validatePassword(password) ? setCorrectPassword(true) : setCorrectPassword(false)
         return correctPassword
@@ -124,18 +136,23 @@ export default function Main() {
                         autoComplete="off"
                         placeholder="Email"
                         value={email}
-                        style={{ borderColor: `${errorEmail ? errorColor : "white"}` }}
+                        style={!correctEmail ? { borderColor: `${errorEmail ? errorColor : "white"}` }
+                            : { borderColor: `${isValidColor}` }}
                         onChange={({ target }) => {
                             setEmail(target.value)
                             setErrorEmail(false)
 
-                        }}>
+                        }}
+
+                        onBlur={validEmail}
+                    >
                     </Input>
                     <IconContainer>
                         <AiOutlineCheck
                             size={24}
                             color={isValidColor}
-                            display="none" />
+                            style={{ display: `${!correctEmail ? "none" : "block"}` }}
+                        />
                     </IconContainer>
                 </InputContainer>
                 <InputContainer>
@@ -145,18 +162,22 @@ export default function Main() {
                         autoComplete="off"
                         placeholder="Nome"
                         value={name}
-                        style={{ borderColor: `${errorName ? errorColor : borderColor}` }}
-
+                        style= {!correctName ? { borderColor: `${errorName ? errorColor : borderColor}` }  
+                        : { borderColor: `${isValidColor}` }}
+                    
                         onChange={({ target }) => {
                             setName(target.value)
                             setErrorName(false)
-                        }}>
+                        }}
+
+                        onBlur={validName}
+                    >
                     </Input>
                     <IconContainer>
                         <AiOutlineCheck
                             size={24}
                             color={isValidColor}
-                            display="none"
+                            style={{ display: `${!correctName ? "none" : "block"}` }}
                         />
                     </IconContainer>
                 </InputContainer>
