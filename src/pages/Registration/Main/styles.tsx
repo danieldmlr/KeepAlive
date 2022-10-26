@@ -135,7 +135,9 @@ export const RegisterButton = styled.button`
 `;
 
 export const LoginGuide = styled.p`
-    font-size: 1.25rem;
+    font-size: 1rem;
+    padding-left: 2.98%
+     
 `;
 
 export const LoginRedirectButton = styled.button`

@@ -10,7 +10,7 @@ export const MissionDescription = styled.div`
 
     @media screen and (max-width: 426px), (max-height: 426px) {
         padding-right: 0%;
-        align-items: center;
+        align-items: right;
     }
 
     @media screen and (max-width: 376px), (max-height: 376px) {

@@ -143,7 +143,8 @@ export const ContinueButton = styled.button`
 `;
 
 export const RegistrationGuide = styled.p`
-    font-size: 1.25rem;
+    font-size: 1rem;
+    padding-left: 2.98%
 `;
 
 export const RegistrationRedirectButton = styled.button`

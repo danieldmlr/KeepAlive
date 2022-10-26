@@ -6,7 +6,7 @@ export const ErrorContainer = styled.div`
 `;
 
 export const StyledErrorMessage = styled.p`
-    width: 37.85%;
+    width:  47.85%;
     margin-left: 6.7%;
     margin-top: 4.02%;
     margin-bottom: -9%;

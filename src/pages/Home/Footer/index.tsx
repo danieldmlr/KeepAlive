@@ -14,12 +14,6 @@ export default function FooterHome() {
         navigate("/")
     }
 
-    // const user = userCredential.user;
-    // const fullName = auth.currentUser?.displayName?.split(' ');
-    // if(fullName){
-    //     const name = fullName[0];
-    // }
-
     return (
         <HomeFooter>
             <LeftContainerFooter>

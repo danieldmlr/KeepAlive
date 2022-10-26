@@ -4,7 +4,7 @@ export default function PasswordErrorMessage() {
 
     return(
         <ErrorContainer>
-            <StyledErrorMessage>Ops, usuário ou senha inválidos. Tente novamente!</StyledErrorMessage>
+            <StyledErrorMessage>As senhas não coincidem</StyledErrorMessage>
         </ErrorContainer>
     )
 }

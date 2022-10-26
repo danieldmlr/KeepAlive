@@ -24,6 +24,7 @@ export const GlobalStyles = createGlobalStyle`
         font-family: 'Mark Pro';
         color: ${textColor};
         font-weight: 400;
+        cursor: context-menu;
     }
     /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure, 

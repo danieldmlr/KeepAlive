@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai"
 import { useNavigate } from "react-router-dom";
 import { borderColor, errorColor, isValidColor } from "../../../components/UI/variables"
-import ErrorMessage from "../../../components/ValidationError"
 import { InputsContainer, Label, Input, IconContainer, RegisterButton, InputContainer, InputContainerPassword, LoginGuide, LoginRedirectButton, PasswordRequirements, Required } from "./styles"
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { app } from '../../../services/firebaseConfig';
+import PasswordErrorMessage from "../../../components/PasswordMatchvalidation";
 
 
 export default function Main() {
@@ -43,7 +43,7 @@ export default function Main() {
             .then((userCredential) => {
                 const user = userCredential.user;
                 const fullName = user.displayName?.split(' ');
-                if(fullName){
+                if (fullName) {
                     const name = fullName[0];
                 }
                 updateProfile(userCredential.user, { displayName: name })
@@ -119,15 +119,15 @@ export default function Main() {
         if (repeatPassword === password) {
             return repeatPassword
         } else {
-            console.log("as senhas não coincidem")
+          
         }
     }
 
     const equalPasswords = () => {
         matchPasswords(password, repeatPassword) ? setPasswordMatch(true) : setPasswordMatch(false)
         return passwordMatch
-    }
-
+    } 
+    
     return (
 
         <>
@@ -166,9 +166,9 @@ export default function Main() {
                         autoComplete="off"
                         placeholder="Nome"
                         value={name}
-                        style= {!correctName ? { borderColor: `${errorName ? errorColor : borderColor}` }  
-                        : { borderColor: `${isValidColor}` }}
-                    
+                        style={!correctName ? { borderColor: `${errorName ? errorColor : borderColor}` }
+                            : { borderColor: `${isValidColor}` }}
+                        
                         onChange={({ target }) => {
                             setName(target.value)
                             setErrorName(false)
@@ -206,7 +206,7 @@ export default function Main() {
                             setIsVisible(true)
                         }}
                         onBlur={() => {
-                            validPassword; setIsVisible(false)
+                            validPassword() && setIsVisible(false)
                         }}
 
 
@@ -245,7 +245,9 @@ export default function Main() {
                             setErrorRepeatPassword(false)
                             setPasswordMatch(false)
                         }}
-                        onBlur={equalPasswords}
+                        onBlur={() => {
+                            equalPasswords();
+                        }}
                     >
                     </Input>
                     <IconContainer>
@@ -255,8 +257,8 @@ export default function Main() {
                             style={{ display: `${!passwordMatch ? "none" : "block"}` }}
                         />
                     </IconContainer>
-                    {errorRepeatPassword && <ErrorMessage />}
                 </InputContainerPassword>
+                    { errorRepeatPassword && <PasswordErrorMessage /> }
             </InputsContainer>
             <RegisterButton onClick={signUp}>Registrar</RegisterButton>
             <LoginGuide>Se você já possui um cadastro, clique <LoginRedirectButton onClick={() => navigate("/")}>aqui</LoginRedirectButton></LoginGuide>

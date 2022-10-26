@@ -14,13 +14,14 @@ export const HomeSection = styled.section`
     justify-content: space-between;
     box-sizing: border-box;
 
-    @media screen and (max-width: 1441px) {
+    @media screen and (max-width: 1440px) {
         background-size: 27%;
         background-position: 0px 71%;
     }
 
-    @media screen and (max-width: 1025px){
+    @media screen and (max-width: 1023px){
         background-position: 0 82%;
+        background-size: 30%;
     }
 
     @media screen and (max-width: 769px), (max-height: 426px) {

@@ -35,7 +35,7 @@ export const LeftContainerFooter = styled.div`
 `;
 
 export const FooterText = styled.p`
-    width: 46%;
+    width: 47%;
     font-size: 0.75rem;
     /* padding: 0 1.83% 0 15%; */
     text-align: end;
@@ -224,6 +224,7 @@ export const FooterButtonContinue = styled.button`
     border: none;
     font-family: 'Mark Pro';
     font-size: 0.75rem;
+    cursor: pointer;
 
     @media screen and (max-width: 769px){
         width: 50%;
@@ -239,6 +240,7 @@ export const FooterButtonLogout = styled.button`
     border: none;
     font-family: 'Mark Pro';
     font-size: 0.75rem;
+    cursor: pointer;
 
     @media screen and (max-width: 769px){
         width: 50%;

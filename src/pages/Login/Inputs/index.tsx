@@ -4,7 +4,7 @@ import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 import ErrorMessage from '../../../components/ValidationError';
 import { errorColor } from '../../../components/UI/variables';
 import { InputsContainer, Label, EmailContainer, Input, IconContainer, PasswordContainer, ContinueButton, RegistrationGuide, RegistrationRedirectButton } from './styles';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, updateCurrentUser } from "firebase/auth";
 import { app } from '../../../services/firebaseConfig';
 
 export default function Inputs() {
@@ -22,6 +22,8 @@ export default function Inputs() {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                alert(errorMessage)
+                // handleSubmit()
             });
     }
 
@@ -35,11 +37,11 @@ export default function Inputs() {
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
 
-    const handleSubmit = () => {
-        if (email.length === 0 || password.length < 3) { setError(true) }
-        else { setError(false); navigate("/home") }
+    // const handleSubmit = () => {
+    //     if () { setError(true) }
+    //     else { setError(false); navigate("/home") }
 
-    }
+    // }
 
     return (
         <>
