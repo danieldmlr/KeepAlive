@@ -10,22 +10,25 @@ export const HomeFooter = styled.footer`
 
     @media screen and (max-width: 769px){
         flex-direction: column-reverse;
-        height: 200px;
+        height: 20%;
     }
 
     @media screen and (max-width: 321px){
-        height: 210px;   
+        height: 10%;   
     }
 
     @media screen and (max-width: 281px){
-        height: 185px;  
+        height: 40%;  
     }
 `;
 
 export const UserGreeting = styled.p`
     font-size: 1.5rem;
     font-weight: 700;
-    /* padding-left: 1.44%; */
+
+    @media screen and (max-width: 281px){
+       font-size: 0.875rem ;
+    }
 `;
 
 export const LeftContainerFooter = styled.div`
@@ -37,7 +40,6 @@ export const LeftContainerFooter = styled.div`
 export const FooterText = styled.p`
     width: 47%;
     font-size: 0.75rem;
-    /* padding: 0 1.83% 0 15%; */
     text-align: end;
 
     @media screen and (max-width: 1441px) {
@@ -46,19 +48,14 @@ export const FooterText = styled.p`
         padding: 0 1.83% 0 7.44%;
     }
 
-    @media screen and (max-width: 1025px){
-        padding-left: 9%;
-    }
 
-    @media screen and (max-width: 1024px){
-        width: 24%;
+    @media screen and (max-width: 1025px){
+        height: 20%;
         font-size: 0.875rem;
-        padding-left: 0;
     }
 
     @media screen and (max-width: 769px){
-        /* width: 66%; */
-        width: 75%;
+        width: 38%;
         font-size: 0.875rem;
         margin-bottom: 2%;
         padding-left: 0;
@@ -70,25 +67,22 @@ export const FooterText = styled.p`
     }
 
     @media screen and (max-width: 426px) {
-        /* width: 66%; */
         width: 93%;
         text-align: center;
     }
 
     @media screen and (max-width: 376px){
-        /* width: 66%; */
         width: 86%;
     
     }
 
     @media screen and (max-width: 321px){
-        /* width: 66%; */
         width: 76%;
     
     }
 
     @media screen and (max-width: 281px), (max-height: 281px) {
-        width: 88%;
+        width: 64%;
     }
 `;
 
@@ -96,7 +90,6 @@ export const SeparationBar = styled.p`
     border: 1px solid #FFFFFF;
     width: 0;
     height: 59px;
-    /* margin-right: 6.5%; */
 
     @media screen and (max-width: 769px){
         display: none;
@@ -109,14 +102,6 @@ export const TimerContainer = styled.div`
     padding-right: 19.4%;
     width: 12.5%;
 
-    @media screen and (max-width: 1441px){
-        padding-right: 16.4%;   
-    }
-
-    @media screen and (max-width: 1441px){
-        padding-right: 19.4%;   
-    }
-
     @media screen and (max-width: 769px) {
         padding-right: 7%;
         margin-bottom: 1.5%;
@@ -127,7 +112,7 @@ export const TimerContainer = styled.div`
     }
 
     @media screen and (max-width: 376px){
-        margin-bottom: 2.5%;
+        margin-bottom: 5%;
     }
 
     @media screen and (max-width: 321px){

@@ -9,17 +9,12 @@ export const MissionDescription = styled.div`
     padding-right: 7.03%;
 
     @media screen and (max-width: 426px), (max-height: 426px) {
-        padding-right: 0%;
         align-items: right;
     }
 
     @media screen and (max-width: 376px), (max-height: 376px) {
         margin-bottom: 1.5%;
     }
-
-    /* @media screen and (max-width: 281px) {
-        margin-bottom: 10%;
-    } */
 `;
 
 export const MissionText = styled.h2`
@@ -33,7 +28,6 @@ export const MissionText = styled.h2`
         
     }
     
-     
     @media screen and (max-width: 1025px) {
         font-size: 2.75rem;
         
