@@ -4,25 +4,18 @@ import { borderColor, buttonColor, buttonTextColor, textColor } from "../../../c
 export const InputsContainer = styled.div`
     display: flex;
     flex-direction: column;
-    margin-bottom: 17.1%;
+    margin-bottom: 21.1%;
 
-    @media screen and (max-width: 426px) {
-        margin-bottom: 23.1%;
-    }
-
-    @media screen and (max-width: 321px) {
-        margin-top: 6%;
-    }
 `;
 
 export const Label = styled.label`
     font-size: 1.875rem;
-    margin-bottom: 4.76%;
+    margin-bottom: 6.2%;
 `;
 
 export const Input = styled.input`
     width: 69.53%;
-    height: 56px;
+    height: 4.9vh;
     background-color: transparent;
     color:${textColor};
     font-size: 1.125rem;
@@ -38,36 +31,12 @@ export const Input = styled.input`
         font-size: 1.125rem;
     };
     
-    @media screen and (max-width: 1024px){
-        width: 70%;
-        height: 46px;
-    }
-
-    @media screen and (max-width: 768px) and (orientation: portrait){
-        width: 52.745%;
-        height: 56px;
-    }
-
-    @media screen and (max-width: 426px) {
-        width: 70%;
-        height: 52px;
-    }
-
-    @media screen and (max-width: 376px) {
-        width: 70%;
-        height: 52px;
-    }
-
-    @media screen and (max-width: 321px) {
-        width: 70%;
-        height: 56px;
-    }
 `;
 
 export const InputContainer = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 4.91%;
+    margin-bottom: 6.2%;
 `;
 
 export const InputContainerPassword = styled.div`
@@ -81,7 +50,7 @@ export const IconContainer = styled.div`
 `;
 
 export const PasswordRequirements = styled.div`
-    margin-bottom: 4.91%;
+  margin-bottom: 6.2%;
     padding-left: 2.98%;
 `;
 
@@ -90,10 +59,11 @@ export const Required = styled.p`
 `;
 
 export const RegisterButton = styled.button`
-    width: 73.28%;
-    height: 67px;
+    width: 73.3%;
+    height: 6.2vh;
     padding: 0;
-    margin-bottom: 4.91%;
+    padding-left: 2.98%;
+    margin-bottom: 6.2%;
     cursor: pointer;
     background: ${buttonColor};
     color: ${borderColor};
@@ -106,36 +76,11 @@ export const RegisterButton = styled.button`
     border: none;
     border-radius: 50px;
     filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
-    
-    @media screen and (max-width: 1024px) {
-        width: 74%;
-        height: 57px;
-    }
-
-    @media screen and (max-width: 768px) and (orientation: portrait){
-        width: 56.32%;
-        height: 67px;
-    }
-
-    @media screen and (max-width: 426px)  {
-        width: 74%;
-        height: 57px;
-    }
-
-    @media screen and (max-width: 376px)  {
-        width: 74%;
-        height: 57px;
-    }
-
-    @media screen and (max-width: 321px)  {
-        width: 74%;
-        height: 67px;
-    }
 
 `;
 
 export const LoginGuide = styled.p`
-    font-size: 1rem;
+     font-size: 1.125rem;
     padding-left: 2.98%
      
 `;
@@ -148,5 +93,5 @@ export const LoginRedirectButton = styled.button`
     color: ${buttonTextColor};
     background: transparent;
     font-family: 'Mark Pro';
-    font-size: 1.25rem;
+    font-size: 1.125rem;
 `;
