@@ -6,13 +6,7 @@ export const LoginSection = styled.section`
     background-color: #222222;
     width: 100%;
     height: 100vh;
-    box-sizing: border-box;
     display: flex;
-
-    @media screen and (max-width: 768px) , (max-height: 426px){
-        min-height: 800px;
-    }
-
 `;
 
 export const LoginContainer = styled.div`

@@ -1,5 +1,5 @@
 import { LoginSection, LoginContainer, LoginContent, ImgContainer } from './styles';
-import Inputs from './Inputs';
+import Form from './Form';
 import Header from './Header';
 import { WhiteLogo } from '../../components/WhiteLogo';
 import WhiteLogoMedia from '../../components/WhiteLogoMedia';
@@ -16,7 +16,7 @@ export default function Login() {
                 <LoginContent>
                     <WhiteLogoMedia />
                     <Header />
-                    <Inputs />
+                    <Form />
                 </LoginContent>
 
             </LoginContainer>

@@ -6,39 +6,26 @@ interface ButtonProps {
     focused: boolean
 }
 
-
-export const InputsContainer = styled.div`
+export const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
-    margin-bottom: 17.1%;
-
-    @media screen and (max-width: 426px) {
-        margin-bottom: 23.1%;
-    }
-
-    @media screen and (max-width: 321px) {
-        margin-top: 6%;
-    }
+   
 `;
 
 export const Label = styled.label`
     font-size: 1.875rem;
-    margin-bottom: 4.76%;
+    margin-bottom: 6.2%;
 `;
 
 export const EmailContainer = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 4.91%;
-
-    @media screen and (max-width: 321px) {
-        margin-bottom: 10%;
-    }
+    margin-bottom: 6.2%;
 `;
 
 export const Input = styled.input`
     width: 69.53%;
-    height: 56px;
+    height: 4.9vh;
     background-color: transparent;
     color:${textColor};
     font-size: 1.125rem;
@@ -53,37 +40,13 @@ export const Input = styled.input`
         font-family: 'Mark Pro';
         font-size: 1.125rem;
     };
-    
-    @media screen and (max-width: 1024px){
-        width: 70%;
-        height: 46px;
-    }
 
-    @media screen and (max-width: 768px) and (orientation: portrait){
-        width: 52.745%;
-        height: 56px;
-    }
-
-    @media screen and (max-width: 426px) {
-        width: 70%;
-        height: 52px;
-    }
-
-    @media screen and (max-width: 376px) {
-        width: 70%;
-        height: 52px;
-    }
-
-    @media screen and (max-width: 321px) {
-        width: 70%;
-        height: 56px;
-    }
 `;
 
 export const PasswordContainer = styled.div`
     display: flex;
     align-items: center;
-    
+    margin-bottom: 21.1%;
 `;
 
 export const IconContainer = styled.div<ButtonProps>`
@@ -95,10 +58,11 @@ export const IconContainer = styled.div<ButtonProps>`
 `;
 
 export const ContinueButton = styled.button`
-    width: 73.28%;
-    height: 67px;
+    width: 73.3%;
+    height: 6.2vh;
     padding: 0;
-    margin-bottom: 4.91%;
+    padding-left: 2.98%;
+    margin-bottom: 6.2%;
     cursor: pointer;
 
     background: ${buttonColor};
@@ -112,48 +76,22 @@ export const ContinueButton = styled.button`
     border: none;
     border-radius: 50px;
     filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
-    
-    @media screen and (max-width: 1024px) {
-        width: 74%;
-        height: 57px;
-    }
-
-    @media screen and (max-width: 768px) and (orientation: portrait){
-        width: 56.32%;
-        height: 67px;
-    }
-
-    @media screen and (max-width: 426px)  {
-        width: 74%;
-        height: 57px;
-    }
-
-    @media screen and (max-width: 376px)  {
-        width: 74%;
-        height: 57px;
-       
-    }
-
-    @media screen and (max-width: 321px)  {
-        width: 74%;
-        height: 67px;
-        
-    }
 
 `;
 
 export const RegistrationGuide = styled.p`
-    font-size: 1rem;
-    padding-left: 2.98%
+    font-size: 1.125rem;
+    padding-left: 2.98%;
 `;
 
 export const RegistrationRedirectButton = styled.button`
     border: none;
     text-decoration: none;
     padding: 0;
+    padding-left: 1%;
     cursor: pointer;
     color: ${buttonTextColor};
     background: transparent;
     font-family: 'Mark Pro';
-    font-size: 1.25rem;
+    font-size: 1.125rem;
 `;

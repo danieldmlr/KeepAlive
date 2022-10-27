@@ -3,12 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 import ErrorMessage from '../../../components/ValidationError';
 import { errorColor } from '../../../components/UI/variables';
-import { InputsContainer, Label, EmailContainer, Input, IconContainer, PasswordContainer, ContinueButton, RegistrationGuide, RegistrationRedirectButton } from './styles';
+import { FormContainer, Label, EmailContainer, Input, IconContainer, PasswordContainer, ContinueButton, RegistrationGuide, RegistrationRedirectButton } from './styles';
 import { getAuth, signInWithEmailAndPassword, updateCurrentUser } from "firebase/auth";
 import { app } from '../../../services/firebaseConfig';
 
-export default function Inputs() {
-
+export default function Form() {
 
     const auth = getAuth(app);
 
@@ -23,11 +22,8 @@ export default function Inputs() {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 alert(errorMessage)
-                // handleSubmit()
             });
     }
-
-
 
     const [focusedEmail, setFocusedEmail] = useState(false)
     const [focusedPassword, setFocusedPassword] = useState(false)
@@ -37,15 +33,9 @@ export default function Inputs() {
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
 
-    // const handleSubmit = () => {
-    //     if () { setError(true) }
-    //     else { setError(false); navigate("/home") }
-
-    // }
-
     return (
         <>
-            <InputsContainer>
+            <FormContainer>
                 <Label>Login</Label>
                 <EmailContainer>
                     <Input
@@ -92,11 +82,14 @@ export default function Inputs() {
                     </IconContainer>
                 </PasswordContainer>
                 {error && <ErrorMessage />}
-            </InputsContainer>
-            <div>
+
                 <ContinueButton onClick={signIn}>Continuar</ContinueButton>
-                <RegistrationGuide>Ainda não possui um cadastro? Clique <RegistrationRedirectButton onClick={() => navigate("/register")}>aqui</RegistrationRedirectButton></RegistrationGuide>
-            </div>
+                <RegistrationGuide>Ainda não possui um cadastro?
+                    Clique<RegistrationRedirectButton
+                        onClick={() => navigate("/register")}>
+                        aqui</RegistrationRedirectButton>
+                </RegistrationGuide>
+            </FormContainer>
         </>
     )
 
